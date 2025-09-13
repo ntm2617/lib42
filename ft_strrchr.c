@@ -28,11 +28,11 @@ char	*ft_strrchr(const char *s, int c)
 	return ((char *)last);
 }
 
-// int main()
-// {
-// 	const char s[] = "Hello Worldoeiei";
-// 	const char t[] = "Hello Worldoeiei";
-// 	int c = 'e';
-// 	printf("%s\n", strrchr(s, c));
-// 	printf("%s", ft_strrchr(t, c));
-// }
+int main()
+{
+	const char s[] = "Hello Worldoeiei";
+	const char t[] = "Hello Worldoeiei";
+	int c = 'e';
+	printf("%s\n", strrchr(s, c));
+	printf("%s", ft_strrchr(t, c));
+}

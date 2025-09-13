@@ -35,10 +35,10 @@ char	*ft_strnstr(const char *s1, const char *s2, size_t len)
 	return (NULL);
 }
 
-// #include <stdio.h>
-// int main()
-// {
-// 	char s1[] = "hello";
-// 	char s2[] = "lo";
-// 	printf("%s", ft_strnstr(s1,s2,5));
-// }
+#include <stdio.h>
+int main()
+{
+	char s1[] = "heleeeloeiei";
+	char s2[] = "lo";
+	printf("%s", ft_strnstr(s1,s2,8));
+}

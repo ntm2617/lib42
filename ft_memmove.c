@@ -31,11 +31,12 @@ void	*ft_memmove(void *dest, const void *src, size_t n)
 	return (dest);
 }
 
-// int main()
-// {
-// 	char dest[] = "123456789";
-// 	char src[] = "helloeiei";
+#include <string.h>
+int main()
+{
+	char dest[] = "123456789";
+	char src[] = "helloeieixcvbnm";
 
-// 	ft_memmove(dest, src, 3);
-// 	printf("%s\n", dest);
-// }
+	printf("%s\n", memmove(src + 2, src, 5));
+
+}

@@ -25,11 +25,12 @@ char	*ft_strchr(const char *s, int c)
 	return (NULL);
 }
 
-// int main()
-// {
-// 	char s[] = "Hello World lovEyou";
-// 	char a[] = "Hello Eiei";
-// 	int c = 'E';
-// 	printf("%s\n", ft_strchr(s, c));
-// 	printf("%s", strchr(a, c));
-// }
+int main()
+{
+	char s[] = "Hello World lovEyou";
+	char a[] = "Hello Eiei";
+	int c = '\0';
+	int b = 'o';
+	printf("%p\n", ft_strchr(s, c));
+	printf("%p\n", ft_strchr(a, b));
+}

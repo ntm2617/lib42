@@ -32,14 +32,13 @@ void	*ft_memcpy(void *dest, const void *src, size_t n)
 	return (dest);
 
 }
-// #include <stdio.h>
 
-// int main()
-// {
-// 	unsigned char dest[] = "hello brooo";
-// 	unsigned char src[] = "eiei";
-// 	size_t	n = 4;
-// 	unsigned char *a;
-// 	a = ft_memcpy(dest, src, n);
-// 	printf("%s\n", a);
-// }
+#include <string.h>
+int main()
+{
+	char dest[] = "123456789";
+	char src[] = "helloeieixcvbnm";
+
+	printf("%s\n", memcmp(src + 2, src, 5));
+
+}

@@ -34,3 +34,13 @@ size_t	ft_strlcat(char *dest, const char *src, size_t n)
 	}
 	return (len_dest + len_src);
 }
+
+// #include <stdio.h>
+
+// int main()
+// {
+// 	char dest[] = "hello";
+// 	char *src = " world";
+// 	size_t a = ft_strlcat(dest, src, 20);
+// 	printf("%s\n", dest);
+// }

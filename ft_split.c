@@ -23,6 +23,8 @@ int	size(char const *s, char c)
 	{
 		if (s[i] != c)
 			count++;
+		else if (s[i] == c)
+			return (count);
 		i++;
 	}
 	return (count);
@@ -49,38 +51,61 @@ int	group(char const *s, char c)
 char	**ft_split(char const *s, char c)
 {
 	char	**arr;
-	int		len;
 	int		i;
-	int		j;
 	int		n;
-
+	char const	*a;
+	
+	a = s;
+	i = 0;
 	n = 0;
-	i = group(s, c);
-	j = 0;
-	len = sizeof(char) * (size(s, c) + 1) + sizeof(char*) * ((group(s, c) + 1));
-	arr = malloc(len);
-	if (*arr == NULL)
+	arr = malloc(sizeof(char *) * (group(s, c) + 1));
+	if (arr == NULL)
 		return (NULL);
-	while (*(s + n) != '\0' && i > 0)
+	while (i < group(s, c))
 	{
-		if (*(s + n) != c)
-			arr[group(s, c) - i][j++] = *(s + n);
-		else if (*(s + n) == c)
-			i--;
-		n++;
+		printf("%d\n", i);
+		s = s + n;
+		arr[i] = malloc(sizeof(char) * (size(s, c) + 1));
+		printf("--->>>>%d\n",size(s, c));
+		// if (arr[i] == NULL)
+		// 	return (NULL);
+		n = size(s, c);
+		printf("////%d\n", n);
+		i++;
 	}
-	*(arr + group(s, c) - 1) = NULL;
+	i = 0;
+	while (i < group(s, c))
+	{
+		n = 0;
+		while (arr[i][n] != '\0')
+		{
+			if (*(a + n) != c)
+			{
+				a = a + n;
+				arr[i][n] = *(a);
+			}
+			else if (*(a + n) == c)
+				arr[i][n] = '\0';
+			n++;
+		}
+		i++;
+	}
 	return (arr);
-	}
+}
 
 int main()
 {
-	char const s[] = "HELLO, my, name";
+	char const s[] = "HELLO,my,name";
 	char c = ',';
 	char **arr;
+	int i = 0;
 
 	arr = ft_split(s, c);
 	printf("%d\n", size(s, c));
 	printf("%d\n", group(s, c));
-	printf("%s\n", *arr);
+	while (i < 3)
+	{
+		printf("%s\n", arr[i]);
+		i++;
+	}
 }
