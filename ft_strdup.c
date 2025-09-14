@@ -6,7 +6,7 @@
 /*   By: nkarnpan <nkarnpan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/09 13:02:27 by marvin            #+#    #+#             */
-/*   Updated: 2025/09/10 21:14:00 by nkarnpan         ###   ########.fr       */
+/*   Updated: 2025/09/14 22:22:25 by nkarnpan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,8 @@ char	*ft_strdup(const char *str)
 	i = 0;
 	len = ft_strlen(str);
 	s = malloc(sizeof(char) * (len + 1));
+	if (s == NULL)
+		return (NULL);
 	while (str[i] != '\0' && i < len)
 	{
 		s[i] = str[i];

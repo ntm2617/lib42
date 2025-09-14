@@ -6,18 +6,18 @@
 /*   By: nkarnpan <nkarnpan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/21 23:10:44 by marvin            #+#    #+#             */
-/*   Updated: 2025/09/10 21:14:19 by nkarnpan         ###   ########.fr       */
+/*   Updated: 2025/09/15 02:59:12 by nkarnpan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-size_t ft_strlen(const char *c)
+size_t	ft_strlen(const char *c)
 {
 	size_t	i;
 
 	i = 0;
-	while(c[i])
+	while (c[i] != '\0')
 		i++;
 	return (i);
 }

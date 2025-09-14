@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_split.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: nkarnpan <nkarnpan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/09/12 16:53:12 by marvin            #+#    #+#             */
-/*   Updated: 2025/09/12 16:53:12 by marvin           ###   ########.fr       */
+/*   Created: 2025/09/12 02:23:27 by nkarnpan          #+#    #+#             */
+/*   Updated: 2025/09/15 00:01:27 by nkarnpan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,75 +37,100 @@ int	group(char const *s, char c)
 
 	i = 0;
 	count = 0;
+	if (s[0] == c)
+		i++;
 	while (s[i] != '\0')
 	{
-		if (s[i] == c)
+		if (s[i] == c && s[i - 1] != c)
 			count++;
 		i++;
 	}
-	if (s[i] == '\0')
+	if (s[i] == '\0' && s[i - 1] != c)
 		count++;
 	return (count);
 }
 
-char	**ft_split(char const *s, char c)
+char	*reserve_mem(int *size_f, char const *s, char c, char **arr)
 {
-	char	**arr;
-	int		i;
-	int		n;
-	char const	*a;
-	
-	a = s;
+	int	i;
+	int	n;
+
 	i = 0;
 	n = 0;
-	arr = malloc(sizeof(char *) * (group(s, c) + 1));
-	if (arr == NULL)
-		return (NULL);
-	while (i < group(s, c))
+	while (i < *size_f)
 	{
-		printf("%d\n", i);
 		s = s + n;
+		if (size(s, c) == 0)
+		{
+			s++;
+			continue ;
+		}
 		arr[i] = malloc(sizeof(char) * (size(s, c) + 1));
-		printf("--->>>>%d\n",size(s, c));
-		// if (arr[i] == NULL)
-		// 	return (NULL);
-		n = size(s, c);
-		printf("////%d\n", n);
+		if (arr[i] == NULL)
+			return (NULL);
+		n = size(s, c) + 1;
 		i++;
 	}
+	return (*arr);
+}
+
+void	fill(int *size_f, char const *a, char c, char **arr)
+{
+	int	i;
+	int	n;
+
 	i = 0;
-	while (i < group(s, c))
+	while (i < *size_f)
 	{
 		n = 0;
-		while (arr[i][n] != '\0')
+		if (size(a, c) == 0)
 		{
-			if (*(a + n) != c)
-			{
-				a = a + n;
-				arr[i][n] = *(a);
-			}
-			else if (*(a + n) == c)
+			a++;
+			continue ;
+		}
+		while (n < size(a, c) + 1)
+		{
+			if (a[n] != c)
+				arr[i][n] = a[n];
+			else if (a[n] == c)
 				arr[i][n] = '\0';
 			n++;
 		}
+		a = a + n;
 		i++;
 	}
+}
+
+char	**ft_split(char const *s, char c)
+{
+	char		**arr;
+	char const	*a;
+	int			size_f;
+
+	a = s;
+	arr = malloc(sizeof(char *) * (group(s, c) + 1));
+	if (arr == NULL)
+		return (NULL);
+	size_f = group(s, c);
+	reserve_mem(&size_f, s, c, arr);
+	fill(&size_f, a, c, arr);
 	return (arr);
 }
 
-int main()
-{
-	char const s[] = "HELLO,my,name";
-	char c = ',';
-	char **arr;
-	int i = 0;
+// int main()
+// {
+// 	char const s[] = "hello, h, c,world";
+// 	char c = ',';
+// 	char **arr;
+// 	int i = 0;
 
-	arr = ft_split(s, c);
-	printf("%d\n", size(s, c));
-	printf("%d\n", group(s, c));
-	while (i < 3)
-	{
-		printf("%s\n", arr[i]);
-		i++;
-	}
-}
+// 	printf("%d\n", size(s, c));
+// 	printf("%d\n", group(s, c));
+// 	reserve_mem(group(s, c), s, c, arr);
+// 	// arr = ft_split(s, c);
+// 	// while (i < group(s, c))
+// 	// {
+// 	// 	printf("%s\n", arr[i]);
+// 	// 	i++;
+// 	// }
+// }

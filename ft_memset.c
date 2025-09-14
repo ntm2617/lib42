@@ -6,7 +6,7 @@
 /*   By: nkarnpan <nkarnpan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/21 23:21:04 by marvin            #+#    #+#             */
-/*   Updated: 2025/09/10 17:19:08 by nkarnpan         ###   ########.fr       */
+/*   Updated: 2025/09/15 02:40:02 by nkarnpan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 void	*ft_memset(void *s, int c, size_t n)
 {
 	unsigned char	*a;
-	size_t	i;
+	size_t			i;
 
 	a = s;
 	i = 0;
