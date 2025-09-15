@@ -6,7 +6,7 @@
 /*   By: nkarnpan <nkarnpan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/12 03:27:38 by nkarnpan          #+#    #+#             */
-/*   Updated: 2025/09/15 02:56:48 by nkarnpan         ###   ########.fr       */
+/*   Updated: 2025/09/15 03:12:21 by nkarnpan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,12 +32,11 @@ int	count(int n)
 
 char	*ft_itoa(int n)
 {
-	int		b;
 	char	*str;
 	int		i;
 
 	if (n == -2147483648)
-		return ("-2147483648");
+		return (ft_strdup("-2147483648"));
 	i = count(n);
 	str = malloc(sizeof(char) * (i + 1));
 	if (str == NULL)

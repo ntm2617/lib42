@@ -16,13 +16,10 @@ FLAG = -Wall -Wextra -Werror
 all: $(NAME)
 
 $(NAME): $(OBJ)
-	@printf "\033[1;39;47m"
 	ar rcs $(NAME) $(OBJ)
 
-%.o: %.c Makefile 
-	@printf "\033[1;35;47m compile 🦄\033[1;34;47m $@ \033[0m \n"
+%.o: %.c Makefile
 	@$(CC) $(FLAG) -I. -c $< -o $@
-	@printf "\033[0m"
 
 clean:
 	rm -rf $(OBJ)
@@ -31,8 +28,5 @@ fclean: clean
 	rm -rf $(NAME)
 
 re: fclean all
-# so:
-# 	$(CC) -nostartfiles -fPIC $(CFLAGS) $(SRC)
-# 	gcc -nostartfiles -shared -o libft.so $(OBJ)
 
-.PHONY: clean fclean re all 
+.PHONY: clean fclean re all so

@@ -6,7 +6,7 @@
 /*   By: nkarnpan <nkarnpan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/12 02:23:27 by nkarnpan          #+#    #+#             */
-/*   Updated: 2025/09/15 19:13:32 by nkarnpan         ###   ########.fr       */
+/*   Updated: 2025/09/15 23:36:24 by nkarnpan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 int	size(char const *s, char c)
 {
 	int	i;
-	
+
 	i = 0;
 	while (s[i] && s[i] != c)
 	{
@@ -36,7 +36,7 @@ int	group(char const *s, char c)
 		while (s[i] == c && s[i] != '\0')
 			i++;
 		if (s[i] != '\0')
-			count++;	
+			count++;
 		while (s[i] != c && s[i] != '\0')
 			i++;
 	}
@@ -45,7 +45,6 @@ int	group(char const *s, char c)
 
 void	reserve_mem(int size_f, char const *s, char c, char **arr)
 {
-	int	size_ff;
 	int	i;
 	int	n;
 
@@ -54,14 +53,13 @@ void	reserve_mem(int size_f, char const *s, char c, char **arr)
 	while (i < size_f)
 	{
 		s = s + n;
-		size_ff = size(s, c);
-		if (size_ff == 0)
+		if (size(s, c) == 0)
 		{
 			s++;
 			n = 0;
 			continue ;
 		}
-		arr[i] = malloc(sizeof(char) * (size_ff + 1));
+		arr[i] = malloc(sizeof(char) * (size(s, c) + 1));
 		if (arr[i] == NULL)
 		{
 			while (--i >= 0)
@@ -69,9 +67,8 @@ void	reserve_mem(int size_f, char const *s, char c, char **arr)
 			free(arr);
 			return ;
 		}
-		arr[i][size_ff] = '\0';
-		n = size_ff;
-		i++;
+		arr[i++][size(s, c)] = '\0';
+		n = size(s, c);
 	}
 }
 
@@ -123,16 +120,16 @@ char	**ft_split(char const *s, char c)
 
 // int main()
 // {
-// 	// char const s[] = ",hello,world,this,is,a,test,,//\n,";
-// 	// char c = ',';
+// 	char const s[] = ",hello,world,this,is,a,test,,//\n,";
+// 	char c = ',';
 // 	char **arr;
 // 	int i = 0;
 
 // 	// printf("%d\n", size(s, c));
 // 	// printf("%d\n", group(s, c));
 // 	// reserve_mem(group(s, c), s, c, arr);
-// 	arr = ft_split("  tripouille  42  ", ' ');
-// 	while (i < 3)
+// 	arr = ft_split(s,c);
+// 	while (i < group(s, c))
 // 	{
 // 		printf("%s\n", arr[i]);
 // 		free(arr[i]);
